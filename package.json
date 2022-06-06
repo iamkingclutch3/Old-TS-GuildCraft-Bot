@@ -13,7 +13,7 @@
     "files": [
         "dist"
     ],
-    "author": "ThEditor",
+    "author": "i_am_kingclutch#3068",
     "dependencies": {
         "@discordjs/collection": "^0.1.6",
         "@discordjs/opus": "^0.5.3",

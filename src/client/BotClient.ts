@@ -285,6 +285,6 @@ export default class BotClient extends AkairoClient {
    */
   public async start(): Promise<string> {
     await this._init();
-    return this.login("OTAwNDM0MTM3MjA1MzA5NTEx.YXBQow.OCaGVjTB8pUugv8e-tC2sb0fnn8");
+    return this.login(this.config.token);
   }
 }
