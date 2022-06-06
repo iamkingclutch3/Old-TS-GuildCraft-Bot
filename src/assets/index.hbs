@@ -1,0 +1,147 @@
+<html>
+  <head>
+    <title>{{ticketName}}#{{ticketId}}</title>
+    <style>
+      :root {
+        font-family: "Source Sans Pro", sans-serif;
+      }
+
+      header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 2vh;
+        padding-bottom: 2vh;
+        padding-left: 2vw;
+        background: #272b2b;
+      }
+
+      header .name {
+        font-size: 23px;
+      }
+
+      body {
+        margin: 0;
+        border: 0;
+        color: white;
+        background-color: #313333;
+      }
+
+      ::-webkit-scrollbar {
+        width: 10px;
+        background: #3c3d3d;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #656666;
+      }
+
+      .hash {
+        font-size: 40px;
+        margin-right: 5px;
+        color: rgb(172, 168, 168);
+        font-weight: bold;
+      }
+
+      .id {
+        margin-left: 5px;
+        color: rgb(168, 168, 168);
+      }
+
+      .message {
+        margin-left: 8px;
+        margin-top: 20px;
+        display: flex;
+      }
+
+      .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+
+      .message .body {
+        margin-left: 15px;
+      }
+
+      .message .body .username {
+        color: rgb(243, 59, 59);
+      }
+
+      .message .body .content {
+        margin-top: 8px;
+      }
+
+      .timestamp {
+        color: rgb(148, 148, 148);
+      }
+
+      .embed {
+        background-color: rgb(33, 36, 41);
+        margin-top: 5px;
+        padding: 10px 10px;
+        border-radius: 5px;
+        border-left: 4px solid attr('color');
+        max-width: 50vw;
+        font-size: 16px;
+        color:rgb(223, 223, 223);
+      }
+
+      .embed-title {
+        font-weight: bold;
+        font-size: 18px;
+        color: white;
+      }
+
+      .embed-item {
+        margin-bottom: 8px;
+      }
+
+      .embed-field-name {
+        font-weight: bold;
+        margin-bottom: 4px;
+        color: white;
+      }
+
+      .embed-footer {
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <body>
+    <header>
+      <div class="hash">#</div>
+      <div class="name">{{ticketName}}</div>
+      <div class="id">{{ticketId}}</div>
+    </header>
+    {{#msg messages}}
+    <div class="message">
+      <img src="{{@avatar}}" class="avatar" alt="{{this.author.username}}" />
+      <div class="body">
+        <div class="username">
+          {{this.author.username}} <span class="timestamp">{{this.time}}</span>
+        </div>
+        <div class="content">
+          {{@content}}
+        </div>
+        {{#embed this.embeds}}
+        <div class="embed" style="border-left: 4px solid {{@hexColor}};">
+          <div class="embed-title embed-item">{{@title}}</div>
+          <div class="embed-description embed-item">
+            {{@description}}
+          </div>
+          {{#field this.fields}}
+          <div class="embed-field">
+            <div class="embed-field-name">{{@name}}</div>
+            <div class="embed-field-value embed-item">{{@value}}</div>
+          </div>
+          {{/field}}
+          <div class="embed-footer embed-item">{{@text}}</div>
+        </div>
+        {{/embed}}
+      </div>
+    </div>
+    {{/msg}}
+  </body>
+</html>

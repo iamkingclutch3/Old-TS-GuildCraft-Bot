@@ -1,0 +1,1 @@
+node ./dist/Bot.js
